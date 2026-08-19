@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Объявления{% endblock %}
+
+{% block content %}
+  <h1>Объявления</h1>
+
+  <div class="announcements-list">
+    {% if announcements %}
+      <ul>
+        {% for a in announcements %}
+          <li class="announcement-item">
+            <h3>{{ a.title }}</h3>
+            <p>{{ a.body }}</p>
+            <small>{{ a.published_at }}</small>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Пока что нет объявлений.</p>
+    {% endif %}
+  </div>
+{% endblock %}
