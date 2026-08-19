@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}ГАРАЖ — каталог автосалонов и автоуслуг{% endblock %}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="{{ url_for('index') }}" class="brand">
+      <span class="brand__mark">Г</span>
+      <span class="brand__text">ГАРАЖ</span>
+    </a>
+
+    <nav class="mainnav">
+      <a href="{{ url_for('index') }}" class="mainnav__link {% if request.endpoint == 'index' %}is-active{% endif %}">Каталог</a>
+      <a href="{{ url_for('stations_list') }}" class="mainnav__link {% if request.endpoint == 'stations_list' %}is-active{% endif %}">Специалисты</a>
+      <!-- Заменили chat_messages на chats_view -->
+      <a href="{{ url_for('chats_view') }}" class="mainnav__link {% if request.endpoint == 'chats_view' %}is-active{% endif %}">Чат</a>
+      {% if current_user.is_authenticated %}
+        <a href="{{ url_for('my_appointments') }}" class="mainnav__link {% if request.endpoint == 'my_appointments' %}is-active{% endif %}">Мои записи</a>
+      {% endif %}
+    </nav>
+
+    <div class="topbar__auth">
+      {% if current_user.is_authenticated %}
+        {% if current_user.is_admin %}
+          <!-- Заменили admin_services на admin_dashboard -->
+          <a href="{{ url_for('admin_dashboard') }}" class="btn btn--ghost">Админка</a>
+        {% endif %}
+        <a href="{{ url_for('profile_view', user_id=current_user.id) }}" class="user-chip">
+          {% if current_user.avatar %}
+            <img src="{{ url_for('static', filename=current_user.avatar) }}" alt="" class="user-chip__avatar">
+          {% else %}
+            <span class="user-chip__dot"></span>
+          {% endif %}
+          {{ current_user.username }}
+        </a>
+        <a href="{{ url_for('logout') }}" class="btn btn--ghost">Выйти</a>
+      {% else %}
+        <a href="{{ url_for('login') }}" class="btn btn--ghost">Войти</a>
+        <a href="{{ url_for('register') }}" class="btn btn--accent">Регистрация</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-stack">
+      {% for category, message in messages %}
+        <div class="flash flash--{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="sitefooter">
+  <div class="sitefooter__inner">
+    <div class="brand brand--footer">
+      <span class="brand__mark">Г</span>
+      <span class="brand__text">ГАРАЖ</span>
+    </div>
+    <p class="sitefooter__note">Каталог автосалонов и автоуслуг. Демонстрационный проект — данные условны.</p>
+    <p class="sitefooter__copy">© {{ now.year if now else '2026' }} ГАРАЖ</p>
+  </div>
+</footer>
+
+<button id="chat-toggle" class="chat-toggle" type="button" aria-label="Открыть чат поддержки">
+  <svg viewBox="0 0 24 24" fill="none" class="chat-toggle__icon">
+    <path d="M4 5h16v11H8l-4 4V5z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<div id="chat-panel" class="chat-panel" hidden>
+  <div class="chat-panel__head">
+    <span>Заглушка</span>
+    <button id="chat-close" class="chat-panel__close" type="button" aria-label="Закрыть чат">✕</button>
+  </div>
+  <div class="chat-panel__body">
+    <div class="chat-msg chat-msg--in">Заглушка</div>
+    <div class="chat-msg chat-msg--in">Заглушка заглушка заглушка</div>
+  </div>
+  <form class="chat-panel__form" id="chat-form">
+    <input type="text" class="chat-panel__input" placeholder="Заглушка" disabled>
+    <button type="submit" class="btn btn--accent btn--sm">Заглушка</button>
+  </form>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

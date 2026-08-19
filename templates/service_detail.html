@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}{{ service.title }} — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="detailwrap">
+  <div class="detailwrap__inner">
+    <div class="detailwrap__media" style="{% if not service.image %}background: var(--panel-2);{% endif %}">
+      {% if service.image %}
+        <img src="{{ url_for('static', filename=service.image) }}" alt="{{ service.title }}" class="detailwrap__image">
+      {% else %}
+        <svg class="detailwrap__car" viewBox="0 0 120 60" fill="none">
+          <rect x="10" y="30" width="100" height="16" rx="4" fill="currentColor" opacity="0.9"/>
+          <path d="M26 30 L38 14 H82 L94 30" stroke="currentColor" stroke-width="4" fill="none" stroke-linejoin="round"/>
+          <circle cx="32" cy="46" r="8" fill="var(--panel-2)" stroke="currentColor" stroke-width="3"/>
+          <circle cx="88" cy="46" r="8" fill="var(--panel-2)" stroke="currentColor" stroke-width="3"/>
+        </svg>
+      {% endif %}
+      {% if service.badge %}<span class="card__badge detailwrap__badge">{{ service.badge }}</span>{% endif %}
+    </div>
+
+    <div class="detailwrap__body">
+      <p class="detailwrap__eyebrow">{{ category_title }} · <span class="mono">ID {{ service.id }}</span></p>
+      <h1 class="detailwrap__title">{{ service.title }}</h1>
+      <p class="detailwrap__company">{{ service.company }}</p>
+
+      <div class="detailwrap__meta">
+        <span class="card__rating">★ {{ '%.1f'|format(service.rating) }} <span class="card__reviews">({{ service.reviews }} отзывов)</span></span>
+        <span class="detailwrap__price mono">{{ service.price_label }}</span>
+      </div>
+
+      <p class="detailwrap__note">Это демонстрационная карточка каталога. Раздел записи и оплаты пока в разработке.</p>
+
+      <div class="detailwrap__actions">
+        <button class="btn btn--accent" id="detail-book-btn" type="button">Записаться</button>
+        <a href="{{ url_for('index') }}" class="btn btn--ghost">Назад в каталог</a>
+        {% if current_user.is_authenticated and current_user.is_admin %}
+          <a href="{{ url_for('admin_service_edit', service_id=service.id) }}" class="btn btn--ghost">Редактировать</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="stub-toast" class="toast" hidden>Раздел записи в разработке — совсем скоро здесь можно будет забронировать время.</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.getElementById("detail-book-btn").addEventListener("click", function () {
+    var toast = document.getElementById("stub-toast");
+    toast.hidden = false;
+    void toast.offsetWidth;
+    toast.classList.add("is-visible");
+    setTimeout(function () {
+      toast.classList.remove("is-visible");
+      setTimeout(function () { toast.hidden = true; }, 250);
+    }, 3200);
+  });
+</script>
+{% endblock %}

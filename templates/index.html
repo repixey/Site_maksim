@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="app">
+
+<section class="hero">
+  <div class="hero__inner">
+    <p class="hero__eyebrow">Каталог автосалонов и автоуслуг</p>
+    <h1 class="hero__title">Найдите сервис,<br>которому доверяют<br>ваши колёса.</h1>
+    <p class="hero__sub">Дилеры, СТО, шиномонтаж, страхование и тюнинг — в одном каталоге. Сравнивайте, выбирайте, записывайтесь.</p>
+
+    <div class="hero__search">
+      <svg class="hero__search-icon" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input v-model="query" type="text" placeholder="Например: шиномонтаж, ТО, страхование…" class="hero__search-input">
+    </div>
+
+    <div class="hero__stats">
+      <div class="hero__stat"><span class="hero__stat-num">{{ services|length }}</span><span class="hero__stat-label">услуг в каталоге</span></div>
+      <div class="hero__stat"><span class="hero__stat-num">{{ categories|length - 1 }}</span><span class="hero__stat-label">категорий</span></div>
+      <div class="hero__stat"><span class="hero__stat-num">24/7</span><span class="hero__stat-label">запись онлайн</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="categories" class="chipbar">
+  <div class="chipbar__inner">
+    <button
+      v-for="cat in categories"
+      :key="cat.slug"
+      class="chip"
+      :class="{ 'chip--active': activeCategory === cat.slug }"
+      @click="activeCategory = cat.slug"
+    >[[ cat.title ]]</button>
+  </div>
+</section>
+
+<section class="catalog">
+  <div class="catalog__inner">
+    <div class="catalog__head">
+      <h2 class="catalog__title">Услуги</h2>
+      <div class="catalog__head-right">
+        <span class="catalog__count">[[ filtered.length ]] найдено</span>
+        {% if current_user.is_authenticated and current_user.is_admin %}
+          <a href="{{ url_for('admin_services') }}" class="btn btn--sm btn--ghost">Управление объявлениями</a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="grid" v-if="filtered.length">
+      <article
+        v-for="item in filtered"
+        :key="item.id"
+        class="card"
+      >
+        <a :href="'/service/' + item.id" class="card__media" :class="'card__media--v' + item.img_variant">
+          <img v-if="item.image" :src="'/static/' + item.image" class="card__image" alt="">
+          <svg v-else class="card__car" viewBox="0 0 120 60" fill="none">
+            <rect x="10" y="30" width="100" height="16" rx="4" fill="currentColor" opacity="0.9"/>
+            <path d="M26 30 L38 14 H82 L94 30" stroke="currentColor" stroke-width="4" fill="none" stroke-linejoin="round"/>
+            <circle cx="32" cy="46" r="8" fill="#121417" stroke="currentColor" stroke-width="3"/>
+            <circle cx="88" cy="46" r="8" fill="#121417" stroke="currentColor" stroke-width="3"/>
+          </svg>
+          <span v-if="item.badge" class="card__badge">[[ item.badge ]]</span>
+          <span class="card__plate">[[ item.plate ]]</span>
+        </a>
+
+        <div class="card__body">
+          <p class="card__company">[[ item.company ]]</p>
+          <h3 class="card__title"><a :href="'/service/' + item.id">[[ item.title ]]</a></h3>
+
+          <div class="card__meta">
+            <span class="card__rating">★ [[ item.rating.toFixed(1) ]] <span class="card__reviews">([[ item.reviews ]])</span></span>
+          </div>
+
+          <div class="card__footer">
+            <span class="card__price">[[ item.price_label ]]</span>
+            <button class="btn btn--sm btn--accent" @click="openStub(item)">Записаться</button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="empty" v-else>
+      <p class="empty__title">Ничего не нашлось</p>
+      <p class="empty__sub">Попробуйте другой запрос или выберите категорию «Все услуги».</p>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="about__inner">
+    <div class="about__text">
+      <p class="about__eyebrow">О сервисе</p>
+      <h2 class="about__title">Это витрина каталога.</h2>
+      <p class="about__body">Раздел записи и личные кабинеты автосалонов пока в разработке — сейчас перед вами демонстрация карточек услуг и авторизации. Зарегистрируйтесь, чтобы застолбить логин заранее.</p>
+    </div>
+    {% if not current_user.is_authenticated %}
+    <a href="{{ url_for('register') }}" class="btn btn--accent btn--lg">Создать аккаунт</a>
+    {% endif %}
+  </div>
+</section>
+
+<div id="stub-toast" class="toast" hidden>Раздел записи в разработке — совсем скоро здесь можно будет забронировать время.</div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.__SERVICES__ = {{ services|tojson }};
+  window.__CATEGORIES__ = {{ categories|tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}

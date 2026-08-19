@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block title %}Чат поддержки — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="chat-page">
+  <div class="chat-page__inner">
+    <!-- Боковая панель комнат -->
+    <aside class="chat-sidebar">
+      <div class="chat-sidebar__head">
+        <h2>Чаты и каналы</h2>
+      </div>
+      <div class="chat-sidebar__list">
+        <a href="?room=support" class="chat-room-item {% if request.args.get('room', 'support') == 'support' %}is-active{% endif %}">
+          <div class="chat-room-item__icon">💬</div>
+          <div class="chat-room-item__info">
+            <span class="chat-room-item__title">Служба поддержки</span>
+            <span class="chat-room-item__sub">Вопросы по сервису</span>
+          </div>
+        </a>
+        {% if current_user.is_authenticated %}
+        <a href="?room=colleagues" class="chat-room-item {% if request.args.get('room') == 'colleagues' %}is-active{% endif %}">
+          <div class="chat-room-item__icon">🛠️</div>
+          <div class="chat-room-item__info">
+            <span class="chat-room-item__title">Мастерская</span>
+            <span class="chat-room-item__sub">Консультация специалистов</span>
+          </div>
+        </a>
+        <a href="?room=general" class="chat-room-item {% if request.args.get('room') == 'general' %}is-active{% endif %}">
+          <div class="chat-room-item__icon">🚗</div>
+          <div class="chat-room-item__info">
+            <span class="chat-room-item__title">Общий чат</span>
+            <span class="chat-room-item__sub">Общение участников</span>
+          </div>
+        </a>
+        {% endif %}
+      </div>
+    </aside>
+
+    <!-- Основное окно сообщений -->
+    <main class="chat-main">
+      <header class="chat-main__head">
+        <div>
+          <h1 class="chat-main__title">
+            {% set active_room = request.args.get('room', 'support') %}
+            {% if active_room == 'colleagues' %}Мастерская
+            {% elif active_room == 'general' %}Общий чат
+            {% else %}Служба поддержки{% endif %}
+          </h1>
+          <p class="chat-main__sub">Онлайн-консультация в реальном времени</p>
+        </div>
+        <span class="tag tag--success">Онлайн</span>
+      </header>
+
+      <div class="chat-main__messages" id="chat-box">
+        <div class="empty">
+          <p class="empty__sub">Загрузка сообщений...</p>
+        </div>
+      </div>
+
+      <form id="chat-form" class="chat-main__form">
+        <input type="text" id="chat-input" required autocomplete="off" placeholder="Напишите сообщение..." class="field__input chat-main__input">
+        <button type="submit" class="btn btn--accent">Отправить</button>
+      </form>
+    </main>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const room = urlParams.get('room') || 'support';
+  const chatBox = document.getElementById('chat-box');
+  const chatForm = document.getElementById('chat-form');
+  const chatInput = document.getElementById('chat-input');
+  const currentUserId = "{{ current_user.id if current_user.is_authenticated else '' }}";
+
+  async function loadMessages() {
+    try {
+      const res = await fetch(`/api/chat/${room}/messages`);
+      if (!res.ok) return;
+
+      const messages = await res.json();
+      
+      if (messages.length === 0) {
+        chatBox.innerHTML = `
+          <div class="empty">
+            <p class="empty__title">История сообщений пуста</p>
+            <p class="empty__sub">Задайте ваш вопрос первым!</p>
+          </div>`;
+        return;
+      }
+
+      const isScrolledToBottom = chatBox.scrollHeight - chatBox.clientHeight <= chatBox.scrollTop + 50;
+
+      chatBox.innerHTML = messages.map(msg => {
+        let messageClass = 'chat-message';
+        if (msg.is_admin) {
+          messageClass += ' chat-message--admin';
+        } else if (currentUserId && msg.user_id === currentUserId) {
+          messageClass += ' chat-message--mine';
+        }
+
+        const formattedTime = msg.created_at ? msg.created_at.substring(0, 16).replace('T', ' ') : '';
+
+        return `
+          <div class="${messageClass}">
+            <div class="chat-message__head">
+              <span class="chat-message__author">${msg.sender_name}</span>
+              <span class="chat-message__time mono">${formattedTime}</span>
+            </div>
+            <div class="chat-message__body">
+              ${msg.message}
+            </div>
+          </div>`;
+      }).join('');
+
+      if (isScrolledToBottom) {
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    } catch (e) {
+      console.error('Ошибка при загрузке сообщений:', e);
+    }
+  }
+
+  chatForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    try {
+      const res = await fetch(`/api/chat/${room}/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text })
+      });
+
+      if (res.ok) {
+        chatInput.value = '';
+        await loadMessages();
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
+    } catch (e) {
+      console.error('Ошибка отправки:', e);
+    }
+  });
+
+  loadMessages();
+  setInterval(loadMessages, 3000);
+});
+</script>
+{% endblock %}

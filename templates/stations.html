@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Наши специалисты — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="catalog__inner">
+  <div class="catalog__head">
+    <div>
+      <h1 class="catalog__title">Команда специалистов</h1>
+      <p class="hero__sub" style="margin-top: 6px;">Профессиональные механики, диагносты и эксперты по авто</p>
+    </div>
+    <span class="catalog__count mono">{{ specialists|length }} мастеров</span>
+  </div>
+
+  <div class="spec-grid">
+    {% for spec in specialists %}
+      <div class="spec-card">
+        {% if spec.photo %}
+          <img src="{{ spec.photo }}" alt="{{ spec.name }}" class="spec-card__avatar">
+        {% else %}
+          <div class="spec-card__avatar spec-card__avatar--fallback">
+            {{ spec.name[0] }}
+          </div>
+        {% endif %}
+        
+        <h3 class="spec-card__name">{{ spec.name }}</h3>
+        <p class="spec-card__role">{{ spec.role }}</p>
+        
+        <div style="display: flex; gap: 8px; margin-bottom: 14px;">
+          <span class="tag tag--mono">Опыт {{ spec.experience or '5+ лет' }}</span>
+          <span class="tag tag--accent">★ {{ spec.rating or 5.0 }}</span>
+        </div>
+
+        {% if spec.phone %}
+          <a href="tel:{{ spec.phone }}" class="btn btn--ghost btn--sm btn--block" style="margin-top: auto;">
+            📞 {{ spec.phone }}
+          </a>
+        {% endif %}
+      </div>
+    {% else %}
+      <div class="empty" style="grid-column: 1 / -1;">
+        <p class="empty__title">Специалисты пока не добавлены</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Изменить объявление' if service else 'Новое объявление' }} — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="authwrap">
+  <div class="authcard authcard--wide">
+    <p class="authcard__eyebrow">Админка</p>
+    <h1 class="authcard__title">{{ 'Изменить объявление' if service else 'Новое объявление' }}</h1>
+
+    <form method="post" enctype="multipart/form-data" class="authform">
+      <label class="field">
+        <span class="field__label">Название</span>
+        <input type="text" name="title" required class="field__input" value="{{ service.title if service else '' }}">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Компания</span>
+        <input type="text" name="company" class="field__input" value="{{ service.company if service else '' }}">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Категория</span>
+        <select name="category" class="field__input">
+          {% for c in categories if c.slug != 'all' %}
+            <option value="{{ c.slug }}" {% if service and service.category == c.slug %}selected{% endif %}>{{ c.title }}</option>
+          {% endfor %}
+        </select>
+      </label>
+
+      <label class="field">
+        <span class="field__label">Цена (текст на карточке)</span>
+        <input type="text" name="price_label" class="field__input" placeholder="от 1 000 ₽" value="{{ service.price_label if service else '' }}">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Бейдж (необязательно)</span>
+        <input type="text" name="badge" class="field__input" placeholder="топ / скидка / новинка" value="{{ service.badge if service else '' }}">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Номерная табличка (короткий код)</span>
+        <input type="text" name="plate" maxlength="6" class="field__input" value="{{ service.plate if service else '' }}">
+      </label>
+
+      <div class="fieldrow">
+        <label class="field">
+          <span class="field__label">Рейтинг (0–5)</span>
+          <input type="number" step="0.1" min="0" max="5" name="rating" class="field__input" value="{{ service.rating if service else 4.5 }}">
+        </label>
+        <label class="field">
+          <span class="field__label">Отзывов</span>
+          <input type="number" min="0" name="reviews" class="field__input" value="{{ service.reviews if service else 0 }}">
+        </label>
+        <label class="field">
+          <span class="field__label">Вариант фона (1–5)</span>
+          <input type="number" min="1" max="5" name="img_variant" class="field__input" value="{{ service.img_variant if service else 1 }}">
+        </label>
+      </div>
+
+      <label class="field">
+        <span class="field__label">Изображение карточки (необязательно, иначе — стандартная иконка)</span>
+        <input type="file" name="image" accept="image/png,image/jpeg,image/gif,image/webp" class="field__input">
+      </label>
+      {% if service and service.image %}
+        <img src="{{ url_for('static', filename=service.image) }}" alt="" class="formimg-preview">
+      {% endif %}
+
+      <button type="submit" class="btn btn--accent btn--block">{{ 'Сохранить изменения' if service else 'Создать объявление' }}</button>
+    </form>
+
+    <p class="authcard__foot"><a href="{{ url_for('admin_services') }}">Назад к списку</a></p>
+  </div>
+</section>
+{% endblock %}

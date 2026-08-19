@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ code }} — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="authwrap">
+  <div class="authcard" style="text-align:center;">
+    <p class="authcard__eyebrow mono">Ошибка {{ code }}</p>
+    <h1 class="authcard__title">{{ message }}</h1>
+    <a href="{{ url_for('index') }}" class="btn btn--accent">На главную</a>
+  </div>
+</section>
+{% endblock %}

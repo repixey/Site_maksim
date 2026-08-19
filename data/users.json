@@ -1,0 +1,38 @@
+[
+  {
+    "id": "c1b826106c0a4ab3b6311d533ba5cac7",
+    "username": "123456222",
+    "email": "12345@gmail.com",
+    "password_hash": "scrypt:32768:8:1$NfC7bNmm4bqA5cUg$4367cffcbaa419f561c3e5c09cc88f932655c828ae804c5a6bdba4e6d8958bfaa82065c5bed0d7e9839401a4a9a63da076ed58463d09505e1eb10306570ae199",
+    "is_admin": false,
+    "avatar": null,
+    "created_at": "2026-08-03T09:18:11.464881"
+  },
+  {
+    "id": "402f9acd79d24f098158d3dc6c6fdb23",
+    "username": "12345678",
+    "email": "12345678@gmail.com",
+    "password_hash": "scrypt:32768:8:1$znFzXUBm5mJk9Vdt$83bbe1dcfc32dd9b898c38c5079f1f8db405ae04a0a4c2f94740ae6b49d97bf294556cb656f75a4456af4d614351d21076231e8e5e944e86f604edb06c63fa3e",
+    "is_admin": true,
+    "avatar": null,
+    "created_at": "2026-08-03T09:18:34.743058"
+  },
+  {
+    "id": "9278cc14a8ec4db5ae4b1ae99045a802",
+    "username": "123456",
+    "email": "admin@garage.local",
+    "password_hash": "scrypt:32768:8:1$8vzlM6mLVAb3j2rK$619be5c8f81458295a29830858621d5f20a09f0f042e34b956b4f256d1dc9b312506ec2528f95adc200410689b5940d3e4dd87d9ff8582591dff9ed4e8fa3c94",
+    "is_admin": true,
+    "avatar": null,
+    "created_at": "2026-08-03T09:18:54.171981"
+  },
+  {
+    "id": "c3ecca2b6cf342879d65c75e73451896",
+    "username": "56565656",
+    "email": "max9102ggg@gmail.com",
+    "password_hash": "scrypt:32768:8:1$apREmA1ixVggelqr$bd749ba792554321e8fcc6647eab3d1ee064a19a21ceb6b9aa38b788011c035f247077752da737789e75663d1c88c8f25059f113d61d5874bd04b80a65eff117",
+    "is_admin": false,
+    "avatar": null,
+    "created_at": "2026-08-03T09:34:20.950662"
+  }
+]

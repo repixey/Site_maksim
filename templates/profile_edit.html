@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Редактирование профиля — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="authwrap">
+  <div class="authcard">
+    <p class="authcard__eyebrow">Профиль</p>
+    <h1 class="authcard__title">Редактировать данные</h1>
+
+    <form method="post" enctype="multipart/form-data" class="authform">
+      <div class="avatarpick">
+        {% if profile.avatar %}
+          <img src="{{ url_for('static', filename=profile.avatar) }}" alt="" class="avatarpick__preview">
+        {% else %}
+          <div class="avatarpick__preview avatarpick__preview--fallback">{{ profile.username[0]|upper }}</div>
+        {% endif %}
+        <label class="field" style="flex:1;">
+          <span class="field__label">Новая аватарка (PNG/JPG/GIF/WEBP, до 5 МБ)</span>
+          <input type="file" name="avatar" accept="image/png,image/jpeg,image/gif,image/webp" class="field__input">
+        </label>
+      </div>
+
+      <label class="field">
+        <span class="field__label">Логин</span>
+        <input type="text" name="username" required class="field__input" value="{{ profile.username }}">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Email</span>
+        <input type="email" name="email" required class="field__input" value="{{ profile.email }}">
+      </label>
+
+      <button type="submit" class="btn btn--accent btn--block">Сохранить</button>
+    </form>
+
+    <p class="authcard__foot"><a href="{{ url_for('profile_view', user_id=profile.id) }}">Отмена</a></p>
+  </div>
+</section>
+{% endblock %}

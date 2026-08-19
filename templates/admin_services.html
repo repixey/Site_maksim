@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Управление объявлениями — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="adminwrap">
+  <div class="adminwrap__inner">
+    <div class="adminwrap__head">
+      <div>
+        <p class="authcard__eyebrow">Админка</p>
+        <h1 class="catalog__title" style="margin:0;">Объявления</h1>
+      </div>
+      <a href="{{ url_for('admin_service_new') }}" class="btn btn--accent">Добавить объявление</a>
+    </div>
+
+    <div class="admintable">
+      <div class="admintable__row admintable__row--head">
+        <span>Название</span>
+        <span>Категория</span>
+        <span>Компания</span>
+        <span>Цена</span>
+        <span>ID</span>
+        <span></span>
+      </div>
+      {% for s in services %}
+      <div class="admintable__row">
+        <span>{{ s.title }}</span>
+        <span>{{ s.category }}</span>
+        <span>{{ s.company }}</span>
+        <span class="mono">{{ s.price_label }}</span>
+        <span class="mono">{{ s.id[:8] }}</span>
+        <span class="admintable__actions">
+          <a href="{{ url_for('service_detail', service_id=s.id) }}" class="btn btn--sm btn--ghost">Открыть</a>
+          <a href="{{ url_for('admin_service_edit', service_id=s.id) }}" class="btn btn--sm btn--ghost">Изменить</a>
+          <form method="post" action="{{ url_for('admin_service_delete', service_id=s.id) }}" onsubmit="return confirm('Удалить объявление?');">
+            <button type="submit" class="btn btn--sm btn--ghost">Удалить</button>
+          </form>
+        </span>
+      </div>
+      {% else %}
+      <div class="admintable__row"><span>Объявлений пока нет.</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Вход — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="authwrap">
+  <div class="authcard">
+    <p class="authcard__eyebrow">С возвращением</p>
+    <h1 class="authcard__title">Вход в аккаунт</h1>
+
+    <form method="post" class="authform">
+      <label class="field">
+        <span class="field__label">Логин или email</span>
+        <input type="text" name="login" required autocomplete="username" class="field__input" placeholder="ivan_petrov">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Пароль</span>
+        <input type="password" name="password" required autocomplete="current-password" class="field__input" placeholder="••••••••">
+      </label>
+
+      <!-- Блок Капчи -->
+      <label class="field">
+        <span class="field__label">Код с картинки</span>
+        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+          <img src="{{ url_for('captcha_img') }}" id="captcha-img" alt="Captcha" style="border-radius: 6px; height: 48px; cursor: pointer;" title="Нажмите, чтобы обновить" onclick="this.src='{{ url_for('captcha_img') }}?' + Math.random();">
+          <button type="button" class="btn btn--outline" style="padding: 0 12px; height: 48px;" onclick="document.getElementById('captcha-img').src='{{ url_for('captcha_img') }}?' + Math.random();">🔄</button>
+        </div>
+        <input type="text" name="captcha" required autocomplete="off" class="field__input" placeholder="Введите код">
+      </label>
+
+      <label class="checkfield">
+        <input type="checkbox" name="remember">
+        <span>Запомнить меня</span>
+      </label>
+
+      <button type="submit" class="btn btn--accent btn--block">Войти</button>
+    </form>
+
+    <p class="authcard__foot">Нет аккаунта? <a href="{{ url_for('register') }}">Зарегистрироваться</a></p>
+  </div>
+</section>
+{% endblock %}

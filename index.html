@@ -1,0 +1,4420 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ЛанДрайв — сеть автосервисов</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- =========================
+     APP
+========================= -->
+
+<div id="app">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            <div class="logo-mark">ЛД</div>
+
+            <div class="logo-text">
+                <strong>Лан<span>Драйв</span></strong>
+                <small>Сеть автосервисов</small>
+            </div>
+        </div>
+
+
+        <!-- USER -->
+
+        <div class="sidebar-user">
+
+            <div class="avatar">
+                АП
+            </div>
+
+            <div class="user-info">
+
+                <strong id="sidebarUserName">
+                    Александр Петров
+                </strong>
+
+                <span id="sidebarUserRole">
+                    Администратор
+                </span>
+
+                <small id="sidebarUserId">
+                    LD-100001
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="navigation">
+
+            <div class="nav-section-title">
+                Основное
+            </div>
+
+            <button
+                class="nav-item active"
+                data-page="dashboard">
+
+                <span>⌂</span>
+                Главная
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="cars">
+
+                <span>🚗</span>
+                Мои автомобили
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="bookings">
+
+                <span>📅</span>
+                Записи
+
+                <b class="nav-badge">
+                    2
+                </b>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="history">
+
+                <span>📋</span>
+                История обслуживания
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="services">
+
+                <span>🔧</span>
+                Услуги и цены
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="promotions">
+
+                <span>%</span>
+                Акции
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="reviews">
+
+                <span>★</span>
+                Отзывы
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="notifications">
+
+                <span>🔔</span>
+                Уведомления
+
+                <b class="nav-badge">
+                    3
+                </b>
+
+            </button>
+
+
+            <div class="nav-section-title">
+                Общение
+            </div>
+
+
+            <button
+                class="nav-item"
+                data-page="support">
+
+                <span>💬</span>
+                Поддержка
+
+                <b class="nav-badge">
+                    2
+                </b>
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="colleagues">
+
+                <span>👥</span>
+                Коллеги
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="general-chat">
+
+                <span>◉</span>
+                Общий чат
+
+            </button>
+
+
+            <div class="nav-section-title">
+                Рабочая зона
+            </div>
+
+
+            <button
+                class="nav-item"
+                data-page="employee">
+
+                <span>👨‍🔧</span>
+                Кабинет работника
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="analytics">
+
+                <span>📊</span>
+                Аналитика
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="admin">
+
+                <span>🛡</span>
+                Админ-панель
+
+            </button>
+
+
+            <div class="nav-section-title">
+                Аккаунт
+            </div>
+
+
+            <button
+                class="nav-item"
+                data-page="profile">
+
+                <span>👤</span>
+                Профиль
+
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-page="settings">
+
+                <span>⚙</span>
+                Настройки
+
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-support">
+
+            <strong>
+                Нужна помощь?
+            </strong>
+
+            <p>
+                Оператор ЛанДрайв поможет
+                решить ваш вопрос.
+            </p>
+
+            <button
+                class="btn btn-orange"
+                data-page="support">
+
+                Открыть чат
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+            <button
+                class="mobile-menu"
+                id="mobileMenu">
+
+                ☰
+
+            </button>
+
+
+            <div class="location">
+
+                📍
+
+                <span>
+                    Москва, ул. Ленина, 25
+                </span>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button class="top-icon">
+                    🔔
+                </button>
+
+                <button
+                    class="btn btn-orange"
+                    id="headerBooking">
+
+                    Онлайн-запись
+
+                </button>
+
+
+                <div class="top-profile">
+
+                    <div class="avatar small">
+                        АП
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Александр
+                        </strong>
+
+                        <small>
+                            Администратор
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+
+            <!-- =========================
+                 DASHBOARD
+            ========================== -->
+
+            <section
+                class="page active"
+                id="page-dashboard">
+
+
+                <!-- HERO -->
+
+                <div class="hero">
+
+                    <div class="hero-overlay"></div>
+
+                    <div class="hero-content">
+
+                        <div class="hero-tags">
+
+                            <span>
+                                СЕТЬ СТО
+                            </span>
+
+                            <span>
+                                5 СТАНЦИЙ
+                            </span>
+
+                            <span>
+                                24/7 ОНЛАЙН-ЗАПИСЬ
+                            </span>
+
+                        </div>
+
+
+                        <h1>
+                            Лан<span>Драйв</span>
+                        </h1>
+
+
+                        <p>
+
+                            Автосервис нового поколения.
+
+                            Ремонт, обслуживание,
+                            история автомобиля и
+                            управление всеми услугами
+                            в одном месте.
+
+                        </p>
+
+
+                        <div class="hero-buttons">
+
+                            <button
+                                class="btn btn-orange"
+                                id="heroBooking">
+
+                                Записаться онлайн
+
+                            </button>
+
+
+                            <button
+                                class="btn btn-dark"
+                                data-page="cars">
+
+                                Мой автомобиль
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATISTICS -->
+
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            СТО в сети
+                        </span>
+
+                        <strong>
+                            5
+                        </strong>
+
+                        <small>
+                            Москва и область
+                        </small>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Специалисты
+                        </span>
+
+                        <strong>
+                            50+
+                        </strong>
+
+                        <small>
+                            профессионалов
+                        </small>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Клиенты
+                        </span>
+
+                        <strong>
+                            10 000+
+                        </strong>
+
+                        <small>
+                            обслужено
+                        </small>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Средний рейтинг
+                        </span>
+
+                        <strong>
+                            4.9
+                        </strong>
+
+                        <small>
+                            ★★★★★
+                        </small>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Гарантия
+                        </span>
+
+                        <strong>
+                            2 года
+                        </strong>
+
+                        <small>
+                            на отдельные работы
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DASHBOARD GRID -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- SERVICES -->
+
+                    <div class="card services-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>
+                                    Популярные услуги
+                                </h2>
+
+                                <p>
+                                    Выберите услугу
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                class="btn btn-small"
+                                data-page="services">
+
+                                Все услуги
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="service-list">
+
+
+                            <div class="service-row">
+
+                                <div>
+
+                                    <strong>
+                                        Диагностика двигателя
+                                    </strong>
+
+                                    <small>
+                                        30–45 минут
+                                    </small>
+
+                                </div>
+
+
+                                <div>
+
+                                    <del>
+                                        1 000 ₽
+                                    </del>
+
+                                    <strong class="orange">
+                                        750 ₽
+                                    </strong>
+
+                                </div>
+
+
+                                <span class="discount">
+                                    -25%
+                                </span>
+
+                            </div>
+
+
+                            <div class="service-row">
+
+                                <div>
+
+                                    <strong>
+                                        Замена масла
+                                    </strong>
+
+                                    <small>
+                                        30–40 минут
+                                    </small>
+
+                                </div>
+
+
+                                <div>
+
+                                    <del>
+                                        1 500 ₽
+                                    </del>
+
+                                    <strong class="orange">
+                                        1 125 ₽
+                                    </strong>
+
+                                </div>
+
+
+                                <span class="discount">
+                                    -25%
+                                </span>
+
+                            </div>
+
+
+                            <div class="service-row">
+
+                                <div>
+
+                                    <strong>
+                                        Шиномонтаж
+                                    </strong>
+
+                                    <small>
+                                        40–60 минут
+                                    </small>
+
+                                </div>
+
+
+                                <div>
+
+                                    <del>
+                                        2 000 ₽
+                                    </del>
+
+                                    <strong class="orange">
+                                        1 500 ₽
+                                    </strong>
+
+                                </div>
+
+
+                                <span class="discount">
+                                    -25%
+                                </span>
+
+                            </div>
+
+
+                            <div class="service-row">
+
+                                <div>
+
+                                    <strong>
+                                        Диагностика ходовой
+                                    </strong>
+
+                                    <small>
+                                        40 минут
+                                    </small>
+
+                                </div>
+
+
+                                <div>
+
+                                    <del>
+                                        1 200 ₽
+                                    </del>
+
+                                    <strong class="orange">
+                                        900 ₽
+                                    </strong>
+
+                                </div>
+
+
+                                <span class="discount">
+                                    -25%
+                                </span>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CAR -->
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>
+                                    Мой автомобиль
+                                </h2>
+
+                                <p>
+                                    BMW 5 Series
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                class="btn btn-small"
+                                data-page="cars">
+
+                                Открыть
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="car-main">
+
+                            <div class="car-placeholder">
+                                BMW
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    BMW 5 Series
+                                </h2>
+
+                                <p>
+                                    2019 · А123АА777
+                                </p>
+
+                                <span class="status status-orange">
+                                    Ремонт в работе
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="progress-title">
+
+                            <span>
+                                Готовность автомобиля
+                            </span>
+
+                            <strong>
+                                65%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progress">
+
+                            <div
+                                style="width:65%">
+                            </div>
+
+                        </div>
+
+
+                        <div class="car-details">
+
+                            <div>
+
+                                <small>
+                                    Пробег
+                                </small>
+
+                                <strong>
+                                    86 420 км
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <small>
+                                    Следующее ТО
+                                </small>
+
+                                <strong>
+                                    89 200 км
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BOOKING -->
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>
+                                    Ближайшая запись
+                                </h2>
+
+                                <p>
+                                    24 мая 2026
+                                </p>
+
+                            </div>
+
+                            <span class="status status-green">
+                                Подтверждена
+                            </span>
+
+                        </div>
+
+
+                        <div class="booking-info">
+
+                            <strong>
+                                Замена масла
+                            </strong>
+
+                            <p>
+                                🕐 14:00
+                            </p>
+
+                            <p>
+                                📍 СТО Ленина, 25
+                            </p>
+
+                            <p>
+                                👨‍🔧 Иван Петров
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            class="btn btn-outline full"
+                            id="routeButton">
+
+                            Построить маршрут
+
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- REPAIR STATUS -->
+
+                <div class="dashboard-grid two">
+
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>
+                                    Текущий ремонт
+                                </h2>
+
+                                <p>
+                                    Заказ № LD-2026-10482
+                                </p>
+
+                            </div>
+
+                            <span class="status status-orange">
+                                В работе
+                            </span>
+
+                        </div>
+
+
+                        <div class="repair-timeline">
+
+
+                            <div class="timeline-step done">
+                                <span>✓</span>
+                                <small>Принят</small>
+                            </div>
+
+
+                            <div class="timeline-line active"></div>
+
+
+                            <div class="timeline-step done">
+                                <span>✓</span>
+                                <small>Диагностика</small>
+                            </div>
+
+
+                            <div class="timeline-line active"></div>
+
+
+                            <div class="timeline-step done">
+                                <span>✓</span>
+                                <small>Согласование</small>
+                            </div>
+
+
+                            <div class="timeline-line active"></div>
+
+
+                            <div class="timeline-step current">
+                                <span>4</span>
+                                <small>В работе</small>
+                            </div>
+
+
+                            <div class="timeline-line"></div>
+
+
+                            <div class="timeline-step">
+                                <span>5</span>
+                                <small>Контроль</small>
+                            </div>
+
+
+                            <div class="timeline-line"></div>
+
+
+                            <div class="timeline-step">
+                                <span>6</span>
+                                <small>Готов</small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="repair-master">
+
+                            <div class="avatar">
+                                ИП
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Иван Петров
+                                </strong>
+
+                                <small>
+                                    Мастер · рейтинг 4.9
+                                </small>
+
+                            </div>
+
+
+                            <strong class="orange">
+                                65%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXTRA WORK -->
+
+                    <div class="card warning-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>
+                                    Требуется согласование
+                                </h2>
+
+                                <p>
+                                    Дополнительные работы
+                                </p>
+
+                            </div>
+
+                            <span class="status status-red">
+                                Важно
+                            </span>
+
+                        </div>
+
+
+                        <p>
+
+                            Мастер обнаружил необходимость
+                            замены тормозных колодок.
+
+                        </p>
+
+
+                        <div class="extra-work">
+
+                            <div>
+
+                                <strong>
+                                    Замена тормозных колодок
+                                </strong>
+
+                                <small>
+                                    Передняя ось · работа + детали
+                                </small>
+
+                            </div>
+
+
+                            <strong class="price">
+                                4 800 ₽
+                            </strong>
+
+                        </div>
+
+
+                        <div class="action-buttons">
+
+                            <button
+                                class="btn btn-green"
+                                id="approveWork">
+
+                                ✓ Одобрить
+
+                            </button>
+
+
+                            <button
+                                class="btn btn-red"
+                                id="rejectWork">
+
+                                Отклонить
+
+                            </button>
+
+
+                            <button
+                                class="btn btn-outline"
+                                data-page="support">
+
+                                Задать вопрос
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MAP -->
+
+                <div class="card map-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                СТО ЛанДрайв
+                            </h2>
+
+                            <p>
+                                Выберите удобную станцию
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            class="btn btn-small"
+                            data-page="services">
+
+                            Все станции
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="map">
+
+                        <div class="map-road road-1"></div>
+                        <div class="map-road road-2"></div>
+                        <div class="map-road road-3"></div>
+
+                        <button class="map-pin pin-1">
+                            📍
+                        </button>
+
+                        <button class="map-pin pin-2">
+                            📍
+                        </button>
+
+                        <button class="map-pin pin-3">
+                            📍
+                        </button>
+
+
+                        <div class="map-station station-1">
+
+                            <strong>
+                                Ленина, 25
+                            </strong>
+
+                            <small>
+                                Открыто · 92% загрузки
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 CARS
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-cars">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Мои автомобили
+                        </h1>
+
+                        <p>
+                            Управляйте автомобилями
+                            и смотрите историю обслуживания
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-orange"
+                        id="addCar">
+
+                        + Добавить автомобиль
+
+                    </button>
+
+                </div>
+
+
+                <div class="cards-grid">
+
+
+                    <div class="card car-card">
+
+                        <div class="car-image">
+                            BMW
+                        </div>
+
+                        <div class="car-card-content">
+
+                            <span class="status status-orange">
+                                Ремонт в работе
+                            </span>
+
+                            <h2>
+                                BMW 5 Series
+                            </h2>
+
+                            <p>
+                                2019 · А123АА777
+                            </p>
+
+                            <p>
+                                VIN:
+                                WBA00000000000001
+                            </p>
+
+
+                            <div class="car-specs">
+
+                                <div>
+                                    <small>
+                                        Пробег
+                                    </small>
+
+                                    <strong>
+                                        86 420 км
+                                    </strong>
+                                </div>
+
+
+                                <div>
+                                    <small>
+                                        Следующее ТО
+                                    </small>
+
+                                    <strong>
+                                        89 200 км
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                class="btn btn-outline full"
+                                data-page="history">
+
+                                История обслуживания
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card recommendations">
+
+                        <h2>
+                            Рекомендации
+                        </h2>
+
+
+                        <div class="recommendation">
+
+                            <span>
+                                🔧
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Замена масла
+                                </strong>
+
+                                <small>
+                                    Через 2 800 км
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="recommendation">
+
+                            <span>
+                                🛞
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Проверка тормозов
+                                </strong>
+
+                                <small>
+                                    Рекомендуется в течение месяца
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="recommendation">
+
+                            <span>
+                                ❄
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Кондиционер
+                                </strong>
+
+                                <small>
+                                    Подготовка к летнему сезону
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 BOOKINGS
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-bookings">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Мои записи
+                        </h1>
+
+                        <p>
+                            Записи на обслуживание
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-orange"
+                        id="newBooking">
+
+                        + Новая запись
+
+                    </button>
+
+                </div>
+
+
+                <div class="card table-card">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Дата
+                                </th>
+
+                                <th>
+                                    СТО
+                                </th>
+
+                                <th>
+                                    Автомобиль
+                                </th>
+
+                                <th>
+                                    Услуга
+                                </th>
+
+                                <th>
+                                    Специалист
+                                </th>
+
+                                <th>
+                                    Статус
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    24.05.2026<br>
+                                    <small>
+                                        14:00
+                                    </small>
+                                </td>
+
+                                <td>
+                                    Ленина, 25
+                                </td>
+
+                                <td>
+                                    BMW 5
+                                </td>
+
+                                <td>
+                                    Замена масла
+                                </td>
+
+                                <td>
+                                    Иван Петров
+                                </td>
+
+                                <td>
+                                    <span class="status status-green">
+                                        Подтверждена
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    12.06.2026<br>
+                                    <small>
+                                        11:30
+                                    </small>
+                                </td>
+
+                                <td>
+                                    Мира, 12
+                                </td>
+
+                                <td>
+                                    BMW 5
+                                </td>
+
+                                <td>
+                                    Диагностика
+                                </td>
+
+                                <td>
+                                    Анна Смирнова
+                                </td>
+
+                                <td>
+                                    <span class="status status-blue">
+                                        Запланирована
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 HISTORY
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-history">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            История обслуживания
+                        </h1>
+
+                        <p>
+                            Все работы и заказ-наряды
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-outline"
+                        id="downloadOrder">
+
+                        ↓ Скачать заказ-наряд
+
+                    </button>
+
+                </div>
+
+
+                <div class="card order-card">
+
+                    <div class="order-header">
+
+                        <div>
+
+                            <span class="status status-green">
+                                Завершён
+                            </span>
+
+                            <h2>
+                                Заказ № LD-2026-10482
+                            </h2>
+
+                            <p>
+                                24 мая 2026 · BMW 5 Series
+                            </p>
+
+                        </div>
+
+
+                        <div class="order-total">
+
+                            <small>
+                                Итого
+                            </small>
+
+                            <strong>
+                                7 525 ₽
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Работа
+                                </th>
+
+                                <th>
+                                    Мастер
+                                </th>
+
+                                <th>
+                                    Цена
+                                </th>
+
+                                <th>
+                                    Гарантия
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>
+                                    Диагностика двигателя
+                                </td>
+
+                                <td>
+                                    Иван Петров
+                                </td>
+
+                                <td>
+                                    750 ₽
+                                </td>
+
+                                <td>
+                                    —
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Замена масла и фильтра
+                                </td>
+
+                                <td>
+                                    Иван Петров
+                                </td>
+
+                                <td>
+                                    1 975 ₽
+                                </td>
+
+                                <td>
+                                    12 мес.
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    Тормозные колодки
+                                </td>
+
+                                <td>
+                                    Иван Петров
+                                </td>
+
+                                <td>
+                                    4 800 ₽
+                                </td>
+
+                                <td>
+                                    12 мес.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SERVICES
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-services">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Услуги и цены
+                        </h1>
+
+                        <p>
+                            Каталог услуг сети ЛанДрайв
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-orange"
+                        id="serviceBooking">
+
+                        Записаться
+
+                    </button>
+
+                </div>
+
+
+                <div class="service-catalog">
+
+
+                    <div class="card catalog-item">
+
+                        <div>
+
+                            <h2>
+                                Диагностика двигателя
+                            </h2>
+
+                            <p>
+                                Комплексная компьютерная
+                                диагностика автомобиля.
+                            </p>
+
+                            <small>
+                                ⏱ 30–45 минут
+                            </small>
+
+                        </div>
+
+
+                        <div class="catalog-price">
+
+                            <del>
+                                1 000 ₽
+                            </del>
+
+                            <strong>
+                                750 ₽
+                            </strong>
+
+                            <span>
+                                -25%
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card catalog-item">
+
+                        <div>
+
+                            <h2>
+                                Замена масла
+                            </h2>
+
+                            <p>
+                                Замена масла и масляного
+                                фильтра.
+                            </p>
+
+                            <small>
+                                ⏱ 30–40 минут
+                            </small>
+
+                        </div>
+
+
+                        <div class="catalog-price">
+
+                            <del>
+                                1 500 ₽
+                            </del>
+
+                            <strong>
+                                1 125 ₽
+                            </strong>
+
+                            <span>
+                                -25%
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card catalog-item">
+
+                        <div>
+
+                            <h2>
+                                Шиномонтаж
+                            </h2>
+
+                            <p>
+                                Сезонная замена и балансировка.
+                            </p>
+
+                            <small>
+                                ⏱ 40–60 минут
+                            </small>
+
+                        </div>
+
+
+                        <div class="catalog-price">
+
+                            <del>
+                                2 000 ₽
+                            </del>
+
+                            <strong>
+                                1 500 ₽
+                            </strong>
+
+                            <span>
+                                -25%
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h2>
+                                Станции ЛанДрайв
+                            </h2>
+
+                            <p>
+                                Выберите удобный адрес
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="stations-list">
+
+                        <div class="station">
+
+                            <div class="station-icon">
+                                📍
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    ЛанДрайв · Ленина, 25
+                                </strong>
+
+                                <small>
+                                    Москва · Открыто до 22:00
+                                </small>
+
+                            </div>
+
+                            <span class="status status-green">
+                                92% загрузки
+                            </span>
+
+                        </div>
+
+
+                        <div class="station">
+
+                            <div class="station-icon">
+                                📍
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    ЛанДрайв · Мира, 12
+                                </strong>
+
+                                <small>
+                                    Москва · Открыто до 22:00
+                                </small>
+
+                            </div>
+
+                            <span class="status status-orange">
+                                81% загрузки
+                            </span>
+
+                        </div>
+
+
+                        <div class="station">
+
+                            <div class="station-icon">
+                                📍
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    ЛанДрайв · Победы, 8
+                                </strong>
+
+                                <small>
+                                    Москва · Открыто до 23:00
+                                </small>
+
+                            </div>
+
+                            <span class="status status-red">
+                                94% загрузки
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 PROMOTIONS
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-promotions">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Акции
+                        </h1>
+
+                        <p>
+                            Специальные предложения ЛанДрайв
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="cards-grid three">
+
+
+                    <div class="card promo-card">
+
+                        <span class="promo-percent">
+                            -20%
+                        </span>
+
+                        <h2>
+                            Замена масла
+                        </h2>
+
+                        <p>
+                            Скидка на работу и фильтр.
+                        </p>
+
+                        <button
+                            class="btn btn-orange"
+                            data-action="promo">
+
+                            Воспользоваться
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="card promo-card">
+
+                        <span class="promo-percent">
+                            -15%
+                        </span>
+
+                        <h2>
+                            Шиномонтаж
+                        </h2>
+
+                        <p>
+                            Сезонное предложение
+                            для клиентов сети.
+                        </p>
+
+                        <button
+                            class="btn btn-orange"
+                            data-action="promo">
+
+                            Воспользоваться
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="card promo-card">
+
+                        <span class="promo-percent">
+                            -10%
+                        </span>
+
+                        <h2>
+                            Диагностика
+                        </h2>
+
+                        <p>
+                            Персональная скидка.
+                        </p>
+
+                        <button
+                            class="btn btn-orange"
+                            data-action="promo">
+
+                            Воспользоваться
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 REVIEWS
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-reviews">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Отзывы
+                        </h1>
+
+                        <p>
+                            Оценка качества обслуживания
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-orange"
+                        id="addReview">
+
+                        + Оставить отзыв
+
+                    </button>
+
+                </div>
+
+
+                <div class="review-summary">
+
+                    <div class="card">
+
+                        <strong class="rating-big">
+                            4.9
+                        </strong>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            127 оценок
+                        </p>
+
+                    </div>
+
+
+                    <div class="card review">
+
+                        <strong>
+                            Игорь К.
+                        </strong>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            Отличный сервис.
+                            Всё быстро и без
+                            навязывания дополнительных работ.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card review">
+
+                        <strong>
+                            Марина С.
+                        </strong>
+
+                        <div class="stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            Мастер подробно объяснил
+                            проблему и показал старые детали.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 NOTIFICATIONS
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-notifications">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Уведомления
+                        </h1>
+
+                        <p>
+                            Все события вашего аккаунта
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-outline"
+                        id="readNotifications">
+
+                        Прочитать всё
+
+                    </button>
+
+                </div>
+
+
+                <div class="card notifications">
+
+
+                    <div class="notification unread">
+
+                        <span class="notification-icon">
+                            🔧
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Ремонт завершён
+                            </strong>
+
+                            <p>
+                                Ваш BMW готов к выдаче.
+                            </p>
+
+                            <small>
+                                2 минуты назад
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notification unread">
+
+                        <span class="notification-icon">
+                            💰
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Требуется согласование
+                            </strong>
+
+                            <p>
+                                Дополнительные работы
+                                на 4 800 ₽.
+                            </p>
+
+                            <small>
+                                18 минут назад
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="notification">
+
+                        <span class="notification-icon">
+                            📅
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                Напоминание о ТО
+                            </strong>
+
+                            <p>
+                                Следующее обслуживание
+                                через 2 800 км.
+                            </p>
+
+                            <small>
+                                Сегодня
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SUPPORT CHAT
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-support">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Поддержка
+                        </h1>
+
+                        <p>
+                            Общение с оператором
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chat-layout card">
+
+
+                    <div class="chat-sidebar">
+
+                        <div class="chat-search">
+
+                            <input
+                                type="text"
+                                placeholder="Поиск">
+
+                        </div>
+
+
+                        <div class="chat-contact active">
+
+                            <div class="avatar small">
+                                А
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Анна · Поддержка
+                                </strong>
+
+                                <small>
+                                    Онлайн
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chat-contact">
+
+                            <div class="avatar small">
+                                С
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Заказ LD-2026-10482
+                                </strong>
+
+                                <small>
+                                    Дополнительные работы
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="chat-main">
+
+                        <div class="chat-header">
+
+                            <div class="avatar small">
+                                А
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Анна
+                                </strong>
+
+                                <small>
+                                    Оператор поддержки · онлайн
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="messages"
+                            id="supportMessages">
+
+
+                            <div class="message">
+
+                                <strong>
+                                    Анна
+                                </strong>
+
+                                <p>
+                                    Здравствуйте!
+                                    Чем можем помочь?
+                                </p>
+
+                                <small>
+                                    14:31
+                                </small>
+
+                            </div>
+
+
+                            <div class="message mine">
+
+                                <p>
+                                    Хочу уточнить статус
+                                    дополнительных работ.
+                                </p>
+
+                                <small>
+                                    14:32
+                                </small>
+
+                            </div>
+
+
+                            <div class="message">
+
+                                <strong>
+                                    Анна
+                                </strong>
+
+                                <p>
+                                    Сейчас уточню информацию
+                                    у мастера.
+                                </p>
+
+                                <small>
+                                    14:32
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="chat-input">
+
+                            <input
+                                id="supportInput"
+                                type="text"
+                                placeholder="Напишите сообщение...">
+
+
+                            <button
+                                class="btn btn-orange"
+                                id="sendSupport">
+
+                                Отправить
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 COLLEAGUES
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-colleagues">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Чат с коллегами
+                        </h1>
+
+                        <p>
+                            Внутренняя коммуникация
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card internal-chat">
+
+                    <div class="internal-message">
+
+                        <div class="avatar">
+                            ИП
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Иван Петров
+                            </strong>
+
+                            <p>
+                                Машина LD-2026-10482
+                                готова к выдаче.
+                            </p>
+
+                            <small>
+                                14:20
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="internal-message mine">
+
+                        <div>
+
+                            <strong>
+                                Александр Петров
+                            </strong>
+
+                            <p>
+                                Принял. Спасибо.
+                            </p>
+
+                            <small>
+                                14:22
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 GENERAL CHAT
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-general-chat">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Общий чат сети
+                        </h1>
+
+                        <p>
+                            Сотрудники ЛанДрайв
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card internal-chat">
+
+                    <div class="internal-message">
+
+                        <div class="avatar">
+                            МО
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Мария Орлова
+                            </strong>
+
+                            <p>
+                                Коллеги, завтра проверяем
+                                остатки масел на всех СТО.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="internal-message">
+
+                        <div class="avatar">
+                            ИП
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                Иван Петров
+                            </strong>
+
+                            <p>
+                                На Ленина остатка хватит
+                                примерно на неделю.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 EMPLOYEE
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-employee">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Кабинет работника
+                        </h1>
+
+                        <p>
+                            Иван Петров · LD-100104
+                        </p>
+
+                    </div>
+
+
+                    <span class="status status-green">
+                        На смене
+                    </span>
+
+                </div>
+
+
+                <div class="stats-grid four">
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Выполнено сегодня
+                        </span>
+
+                        <strong>
+                            5
+                        </strong>
+
+                        <small>
+                            +2 к вчера
+                        </small>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            В работе
+                        </span>
+
+                        <strong>
+                            2
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Заработано
+                        </span>
+
+                        <strong>
+                            12 450 ₽
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Рейтинг
+                        </span>
+
+                        <strong>
+                            4.9
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Сегодняшние работы
+                        </h2>
+
+                    </div>
+
+
+                    <div class="table-wrapper">
+
+                        <table>
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Время
+                                    </th>
+
+                                    <th>
+                                        Автомобиль
+                                    </th>
+
+                                    <th>
+                                        Работа
+                                    </th>
+
+                                    <th>
+                                        Статус
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                <tr>
+
+                                    <td>
+                                        10:00
+                                    </td>
+
+                                    <td>
+                                        BMW 5
+                                    </td>
+
+                                    <td>
+                                        Замена масла
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-green">
+                                            Готово
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        14:00
+                                    </td>
+
+                                    <td>
+                                        Kia Rio
+                                    </td>
+
+                                    <td>
+                                        Диагностика
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-orange">
+                                            В работе
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+
+                                <tr>
+
+                                    <td>
+                                        16:30
+                                    </td>
+
+                                    <td>
+                                        Toyota Camry
+                                    </td>
+
+                                    <td>
+                                        Тормозная система
+                                    </td>
+
+                                    <td>
+                                        <span class="status status-blue">
+                                            Ожидает
+                                        </span>
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 ANALYTICS
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-analytics">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Аналитика сети
+                        </h1>
+
+                        <p>
+                            Показатели всех станций
+                        </p>
+
+                    </div>
+
+
+                    <div class="period-buttons">
+
+                        <button>
+                            Сегодня
+                        </button>
+
+                        <button>
+                            Месяц
+                        </button>
+
+                        <button class="active">
+                            Год
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stats-grid">
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Выручка
+                        </span>
+
+                        <strong>
+                            8.42 млн ₽
+                        </strong>
+
+                        <small class="green">
+                            +14.2%
+                        </small>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Заказы
+                        </span>
+
+                        <strong>
+                            1 842
+                        </strong>
+
+                        <small class="green">
+                            +9.4%
+                        </small>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Средний чек
+                        </span>
+
+                        <strong>
+                            4 571 ₽
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Повторные клиенты
+                        </span>
+
+                        <strong>
+                            68%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <span>
+                            Средняя загрузка
+                        </span>
+
+                        <strong>
+                            84%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="analytics-grid">
+
+
+                    <div class="card">
+
+                        <h2>
+                            СТО по выручке
+                        </h2>
+
+
+                        <div class="analytics-row">
+
+                            <span>
+                                Ленина, 25
+                            </span>
+
+                            <strong>
+                                2.31 млн ₽
+                            </strong>
+
+                            <div class="mini-progress">
+                                <i style="width:92%"></i>
+                            </div>
+
+                        </div>
+
+
+                        <div class="analytics-row">
+
+                            <span>
+                                Мира, 12
+                            </span>
+
+                            <strong>
+                                1.87 млн ₽
+                            </strong>
+
+                            <div class="mini-progress">
+                                <i style="width:81%"></i>
+                            </div>
+
+                        </div>
+
+
+                        <div class="analytics-row">
+
+                            <span>
+                                Победы, 8
+                            </span>
+
+                            <strong>
+                                2.02 млн ₽
+                            </strong>
+
+                            <div class="mini-progress">
+                                <i style="width:88%"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h2>
+                            Популярные услуги
+                        </h2>
+
+
+                        <div class="analytics-row">
+
+                            <span>
+                                Замена масла
+                            </span>
+
+                            <strong>
+                                88%
+                            </strong>
+
+                            <div class="mini-progress">
+                                <i style="width:88%"></i>
+                            </div>
+
+                        </div>
+
+
+                        <div class="analytics-row">
+
+                            <span>
+                                Диагностика
+                            </span>
+
+                            <strong>
+                                71%
+                            </strong>
+
+                            <div class="mini-progress">
+                                <i style="width:71%"></i>
+                            </div>
+
+                        </div>
+
+
+                        <div class="analytics-row">
+
+                            <span>
+                                Шиномонтаж
+                            </span>
+
+                            <strong>
+                                63%
+                            </strong>
+
+                            <div class="mini-progress">
+                                <i style="width:63%"></i>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 ADMIN
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-admin">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Админ-панель
+                        </h1>
+
+                        <p>
+                            Управление сетью ЛанДрайв
+                        </p>
+
+                    </div>
+
+
+                    <span class="status status-green">
+                        Администратор
+                    </span>
+
+                </div>
+
+
+                <div class="admin-tabs">
+
+                    <button
+                        class="active"
+                        data-admin-tab="users">
+
+                        Пользователи
+
+                    </button>
+
+
+                    <button
+                        data-admin-tab="services">
+
+                        Услуги
+
+                    </button>
+
+
+                    <button
+                        data-admin-tab="stations">
+
+                        СТО
+
+                    </button>
+
+
+                    <button
+                        data-admin-tab="roles">
+
+                        Роли и права
+
+                    </button>
+
+
+                    <button
+                        data-admin-tab="logs">
+
+                        Журнал действий
+
+                    </button>
+
+                </div>
+
+
+                <!-- USERS -->
+
+                <div
+                    class="admin-panel active"
+                    id="admin-users">
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>
+                                    Пользователи
+                                </h2>
+
+                                <p>
+                                    Управление аккаунтами
+                                    и ролями
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                class="btn btn-orange"
+                                id="createUser">
+
+                                + Создать пользователя
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Пользователь
+                                        </th>
+
+                                        <th>
+                                            ID
+                                        </th>
+
+                                        <th>
+                                            Роль
+                                        </th>
+
+                                        <th>
+                                            СТО
+                                        </th>
+
+                                        <th>
+                                            Статус
+                                        </th>
+
+                                        <th>
+                                            Действия
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+                                            Александр Петров
+                                        </td>
+
+                                        <td>
+                                            <code>
+                                                LD-100001
+                                            </code>
+                                        </td>
+
+                                        <td>
+                                            <span class="role admin">
+                                                Администратор
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Вся сеть
+                                        </td>
+
+                                        <td>
+                                            <span class="status status-green">
+                                                Активен
+                                            </span>
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                                class="btn btn-small edit-user">
+
+                                                Роли
+
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Мария Орлова
+                                        </td>
+
+                                        <td>
+                                            <code>
+                                                LD-100002
+                                            </code>
+                                        </td>
+
+                                        <td>
+                                            <span class="role boss">
+                                                Начальник
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Ленина, 25
+                                        </td>
+
+                                        <td>
+                                            <span class="status status-green">
+                                                Активен
+                                            </span>
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                                class="btn btn-small edit-user">
+
+                                                Роли
+
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Иван Петров
+                                        </td>
+
+                                        <td>
+                                            <code>
+                                                LD-100104
+                                            </code>
+                                        </td>
+
+                                        <td>
+                                            <span class="role worker">
+                                                Работник
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            Ленина, 25
+                                        </td>
+
+                                        <td>
+                                            <span class="status status-green">
+                                                Активен
+                                            </span>
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                                class="btn btn-small edit-user">
+
+                                                Роли
+
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Елена Кузнецова
+                                        </td>
+
+                                        <td>
+                                            <code>
+                                                LD-100287
+                                            </code>
+                                        </td>
+
+                                        <td>
+                                            <span class="role client">
+                                                Клиент
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            —
+                                        </td>
+
+                                        <td>
+                                            <span class="status status-green">
+                                                Активен
+                                            </span>
+                                        </td>
+
+                                        <td>
+
+                                            <button
+                                                class="btn btn-small edit-user">
+
+                                                Открыть
+
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SERVICES -->
+
+                <div
+                    class="admin-panel"
+                    id="admin-services">
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <h2>
+                                Управление услугами
+                            </h2>
+
+                            <button
+                                class="btn btn-orange"
+                                id="addService">
+
+                                + Добавить услугу
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table>
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Услуга
+                                        </th>
+
+                                        <th>
+                                            Цена
+                                        </th>
+
+                                        <th>
+                                            Скидка
+                                        </th>
+
+                                        <th>
+                                            Время
+                                        </th>
+
+                                        <th>
+                                            Действия
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    <tr>
+
+                                        <td>
+                                            Диагностика двигателя
+                                        </td>
+
+                                        <td>
+                                            750 ₽
+                                        </td>
+
+                                        <td>
+                                            25%
+                                        </td>
+
+                                        <td>
+                                            30 мин
+                                        </td>
+
+                                        <td>
+                                            <button class="btn btn-small">
+                                                Изменить
+                                            </button>
+                                        </td>
+
+                                    </tr>
+
+
+                                    <tr>
+
+                                        <td>
+                                            Замена масла
+                                        </td>
+
+                                        <td>
+                                            1 125 ₽
+                                        </td>
+
+                                        <td>
+                                            25%
+                                        </td>
+
+                                        <td>
+                                            40 мин
+                                        </td>
+
+                                        <td>
+                                            <button class="btn btn-small">
+                                                Изменить
+                                            </button>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATIONS -->
+
+                <div
+                    class="admin-panel"
+                    id="admin-stations">
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <h2>
+                                Станции сети
+                            </h2>
+
+                            <button
+                                class="btn btn-orange"
+                                id="addStation">
+
+                                + Добавить СТО
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="station-admin-list">
+
+
+                            <div class="station-admin">
+
+                                <div>
+
+                                    <strong>
+                                        ЛанДрайв · Ленина, 25
+                                    </strong>
+
+                                    <small>
+                                        Москва · 14 сотрудников
+                                    </small>
+
+                                </div>
+
+                                <span>
+                                    92%
+                                </span>
+
+                                <button class="btn btn-small">
+                                    Управление
+                                </button>
+
+                            </div>
+
+
+                            <div class="station-admin">
+
+                                <div>
+
+                                    <strong>
+                                        ЛанДрайв · Мира, 12
+                                    </strong>
+
+                                    <small>
+                                        Москва · 11 сотрудников
+                                    </small>
+
+                                </div>
+
+                                <span>
+                                    81%
+                                </span>
+
+                                <button class="btn btn-small">
+                                    Управление
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ROLES -->
+
+                <div
+                    class="admin-panel"
+                    id="admin-roles">
+
+                    <div class="card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h2>
+                                    Роли и права
+                                </h2>
+
+                                <p>
+                                    Настройка доступа пользователей
+                                </p>
+
+                            </div>
+
+                            <button
+                                class="btn btn-orange"
+                                id="saveRoles">
+
+                                Сохранить
+
+                            </button>
+
+                        </div>
+
+
+                        <div class="role-matrix">
+
+                            <div class="role-row header">
+
+                                <strong>
+                                    Роль
+                                </strong>
+
+                                <strong>
+                                    Пользователи
+                                </strong>
+
+                                <strong>
+                                    Услуги
+                                </strong>
+
+                                <strong>
+                                    Записи
+                                </strong>
+
+                                <strong>
+                                    Аналитика
+                                </strong>
+
+                                <strong>
+                                    Система
+                                </strong>
+
+                            </div>
+
+
+                            <div class="role-row">
+
+                                <strong>
+                                    Администратор
+                                </strong>
+
+                                <span>✓</span>
+                                <span>✓</span>
+                                <span>✓</span>
+                                <span>✓</span>
+                                <span>✓</span>
+
+                            </div>
+
+
+                            <div class="role-row">
+
+                                <strong>
+                                    Начальник
+                                </strong>
+
+                                <span>✓</span>
+                                <span>✓</span>
+                                <span>✓</span>
+                                <span>✓</span>
+                                <span>—</span>
+
+                            </div>
+
+
+                            <div class="role-row">
+
+                                <strong>
+                                    Заместитель
+                                </strong>
+
+                                <span>—</span>
+                                <span>✓</span>
+                                <span>✓</span>
+                                <span>✓</span>
+                                <span>—</span>
+
+                            </div>
+
+
+                            <div class="role-row">
+
+                                <strong>
+                                    Работник
+                                </strong>
+
+                                <span>—</span>
+                                <span>просмотр</span>
+                                <span>✓</span>
+                                <span>свои</span>
+                                <span>—</span>
+
+                            </div>
+
+
+                            <div class="role-row">
+
+                                <strong>
+                                    Клиент
+                                </strong>
+
+                                <span>свой</span>
+                                <span>просмотр</span>
+                                <span>свои</span>
+                                <span>—</span>
+                                <span>—</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOGS -->
+
+                <div
+                    class="admin-panel"
+                    id="admin-logs">
+
+                    <div class="card">
+
+                        <h2>
+                            Журнал действий
+                        </h2>
+
+
+                        <div class="log">
+
+                            <span>
+                                14:32
+                            </span>
+
+                            <strong>
+                                LD-100001
+                            </strong>
+
+                            <p>
+                                Изменил цену услуги
+                                «Диагностика двигателя».
+                            </p>
+
+                        </div>
+
+
+                        <div class="log">
+
+                            <span>
+                                14:28
+                            </span>
+
+                            <strong>
+                                LD-100104
+                            </strong>
+
+                            <p>
+                                Завершил заказ
+                                LD-2026-10482.
+                            </p>
+
+                        </div>
+
+
+                        <div class="log">
+
+                            <span>
+                                14:21
+                            </span>
+
+                            <strong>
+                                LD-100001
+                            </strong>
+
+                            <p>
+                                Выдал роль «Начальник»
+                                пользователю LD-100002.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 PROFILE
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-profile">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Профиль
+                        </h1>
+
+                        <p>
+                            Личные данные пользователя
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="btn btn-orange"
+                        id="editProfile">
+
+                        Редактировать
+
+                    </button>
+
+                </div>
+
+
+                <div class="profile-grid">
+
+
+                    <div class="card profile-card">
+
+                        <div class="profile-main">
+
+                            <div class="profile-avatar">
+                                АП
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Александр Петров
+                                </h2>
+
+                                <span class="role admin">
+                                    Администратор
+                                </span>
+
+                                <div class="profile-id">
+                                    ID: LD-100001
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-data">
+
+                            <div>
+
+                                <small>
+                                    Телефон
+                                </small>
+
+                                <strong>
+                                    +7 (495) 123-46-67
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <small>
+                                    Логин
+                                </small>
+
+                                <strong>
+                                    alex.petrov
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <small>
+                                    Дата регистрации
+                                </small>
+
+                                <strong>
+                                    12.03.2024
+                                </strong>
+
+                            </div>
+
+
+                            <div>
+
+                                <small>
+                                    ID пользователя
+                                </small>
+
+                                <strong class="orange">
+                                    LD-100001
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="btn btn-outline full"
+                            id="copyId">
+
+                            Скопировать ID
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h2>
+                            Безопасность
+                        </h2>
+
+
+                        <div class="security-item">
+
+                            <span>
+                                🔐
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Пароль
+                                </strong>
+
+                                <small>
+                                    Последнее изменение
+                                    21 день назад
+                                </small>
+
+                            </div>
+
+                            <button class="btn btn-small">
+                                Изменить
+                            </button>
+
+                        </div>
+
+
+                        <div class="security-item">
+
+                            <span>
+                                🛡
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Двухфакторная аутентификация
+                                </strong>
+
+                                <small>
+                                    Включена
+                                </small>
+
+                            </div>
+
+                            <span class="status status-green">
+                                Включена
+                            </span>
+
+                        </div>
+
+
+                        <div class="security-item">
+
+                            <span>
+                                💻
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Активные сессии
+                                </strong>
+
+                                <small>
+                                    2 устройства
+                                </small>
+
+                            </div>
+
+                            <button class="btn btn-small">
+                                Открыть
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 SETTINGS
+            ========================== -->
+
+            <section
+                class="page"
+                id="page-settings">
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h1>
+                            Настройки
+                        </h1>
+
+                        <p>
+                            Персональные параметры
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="settings-grid">
+
+
+                    <div class="card">
+
+                        <h2>
+                            Основные настройки
+                        </h2>
+
+
+                        <label class="setting">
+
+                            <span>
+                                Язык
+                            </span>
+
+                            <select>
+
+                                <option>
+                                    Русский
+                                </option>
+
+                                <option>
+                                    English
+                                </option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label class="setting">
+
+                            <span>
+                                Тема
+                            </span>
+
+                            <select id="themeSelect">
+
+                                <option value="dark">
+                                    Тёмная
+                                </option>
+
+                                <option value="light">
+                                    Светлая
+                                </option>
+
+                            </select>
+
+                        </label>
+
+
+                        <label class="setting">
+
+                            <span>
+                                Уведомления
+                            </span>
+
+                            <select>
+
+                                <option>
+                                    Все
+                                </option>
+
+                                <option>
+                                    Только важные
+                                </option>
+
+                                <option>
+                                    Выключены
+                                </option>
+
+                            </select>
+
+                        </label>
+
+
+                        <button
+                            class="btn btn-orange"
+                            id="saveSettings">
+
+                            Сохранить
+
+                        </button>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <h2>
+                            Система
+                        </h2>
+
+
+                        <div class="system-status">
+
+                            <span class="online-dot"></span>
+
+                            <div>
+
+                                <strong>
+                                    Все системы работают
+                                </strong>
+
+                                <small>
+                                    Последняя проверка:
+                                    только что
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="system-status">
+
+                            <span class="online-dot"></span>
+
+                            <div>
+
+                                <strong>
+                                    База данных
+                                </strong>
+
+                                <small>
+                                    Работает
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="system-status">
+
+                            <span class="online-dot"></span>
+
+                            <div>
+
+                                <strong>
+                                    Уведомления
+                                </strong>
+
+                                <small>
+                                    Работает
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================
+     BOOKING MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="bookingModal">
+
+    <div class="modal-window">
+
+        <button
+            class="modal-close"
+            data-close-modal>
+
+            ×
+
+        </button>
+
+
+        <div class="modal-header">
+
+            <span class="modal-icon">
+                📅
+            </span>
+
+            <div>
+
+                <h2>
+                    Онлайн-запись
+                </h2>
+
+                <p>
+                    Выберите станцию,
+                    услугу и время.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <form id="bookingForm">
+
+
+            <label>
+
+                Станция
+
+                <select required>
+
+                    <option>
+                        ЛанДрайв · Ленина, 25
+                    </option>
+
+                    <option>
+                        ЛанДрайв · Мира, 12
+                    </option>
+
+                    <option>
+                        ЛанДрайв · Победы, 8
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+
+                Автомобиль
+
+                <select required>
+
+                    <option>
+                        BMW 5 Series · А123АА777
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <label>
+
+                Услуга
+
+                <select required>
+
+                    <option>
+                        Диагностика двигателя · 750 ₽
+                    </option>
+
+                    <option>
+                        Замена масла · 1 125 ₽
+                    </option>
+
+                    <option>
+                        Шиномонтаж · 1 500 ₽
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <div class="form-row">
+
+                <label>
+
+                    Дата
+
+                    <input
+                        type="date"
+                        value="2026-05-24"
+                        required>
+
+                </label>
+
+
+                <label>
+
+                    Время
+
+                    <select required>
+
+                        <option>
+                            10:00
+                        </option>
+
+                        <option>
+                            11:30
+                        </option>
+
+                        <option>
+                            14:00
+                        </option>
+
+                        <option>
+                            16:30
+                        </option>
+
+                    </select>
+
+                </label>
+
+            </div>
+
+
+            <label>
+
+                Специалист
+
+                <select>
+
+                    <option>
+                        Автоматически подобрать
+                    </option>
+
+                    <option>
+                        Иван Петров · свободен
+                    </option>
+
+                    <option>
+                        Анна Смирнова · свободна
+                    </option>
+
+                </select>
+
+            </label>
+
+
+            <button
+                class="btn btn-orange full"
+                type="submit">
+
+                Подтвердить запись
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     GENERIC MODAL
+========================= -->
+
+<div
+    class="modal"
+    id="genericModal">
+
+    <div class="modal-window">
+
+        <button
+            class="modal-close"
+            data-close-modal>
+
+            ×
+
+        </button>
+
+
+        <div id="genericModalContent">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+    id="toast"
+    class="toast">
+
+    Изменения сохранены
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

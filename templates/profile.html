@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Профиль {{ profile.username }} — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="profilewrap">
+  <div class="profilecard">
+    <div class="profilecard__head">
+      {% if profile.avatar %}
+        <img src="{{ url_for('static', filename=profile.avatar) }}" alt="" class="profilecard__avatar">
+      {% else %}
+        <div class="profilecard__avatar profilecard__avatar--fallback">{{ profile.username[0]|upper }}</div>
+      {% endif %}
+
+      <div>
+        <h1 class="profilecard__name">{{ profile.username }}</h1>
+        <p class="profilecard__email">{{ profile.email }}</p>
+        <div class="profilecard__badges">
+          {% if profile.is_admin %}
+            <span class="tag tag--accent">Администратор</span>
+          {% else %}
+            <span class="tag">Пользователь</span>
+          {% endif %}
+          <span class="tag tag--mono">ID: {{ profile.id[:8] }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profilecard__actions">
+      {% if is_self %}
+        <a href="{{ url_for('profile_edit', user_id=profile.id) }}" class="btn btn--accent">Редактировать профиль</a>
+      {% endif %}
+
+      {% if current_user.is_admin and not is_self %}
+        <form method="post" action="{{ url_for('profile_toggle_admin', user_id=profile.id) }}">
+          {% if profile.is_admin %}
+            <button type="submit" class="btn btn--ghost">Снять права администратора</button>
+          {% else %}
+            <button type="submit" class="btn btn--ghost">Назначить администратором</button>
+          {% endif %}
+        </form>
+      {% endif %}
+    </div>
+
+    <p class="profilecard__foot">Дата регистрации: <span class="mono">{{ profile.created_at[:10] }}</span></p>
+  </div>
+</section>
+{% endblock %}

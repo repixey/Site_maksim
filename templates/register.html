@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Регистрация — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="authwrap">
+  <div class="authcard">
+    <p class="authcard__eyebrow">Присоединяйтесь</p>
+    <h1 class="authcard__title">Создать аккаунт</h1>
+
+    <form method="post" class="authform">
+      <label class="field">
+        <span class="field__label">Логин</span>
+        <input type="text" name="username" required class="field__input" placeholder="ivan_petrov" value="{{ form.get('username', '') }}">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Email</span>
+        <input type="email" name="email" required autocomplete="email" class="field__input" placeholder="ivan@example.com" value="{{ form.get('email', '') }}">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Пароль</span>
+        <input type="password" name="password" required autocomplete="new-password" class="field__input" placeholder="Минимум 6 символов">
+      </label>
+
+      <label class="field">
+        <span class="field__label">Повторите пароль</span>
+        <input type="password" name="password2" required autocomplete="new-password" class="field__input" placeholder="Повторите пароль">
+      </label>
+
+      <!-- Блок Капчи -->
+      <label class="field">
+        <span class="field__label">Код с картинки</span>
+        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 8px;">
+          <img src="{{ url_for('captcha_img') }}" id="captcha-img" alt="Captcha" style="border-radius: 6px; height: 48px; cursor: pointer;" title="Нажмите, чтобы обновить" onclick="this.src='{{ url_for('captcha_img') }}?' + Math.random();">
+          <button type="button" class="btn btn--outline" style="padding: 0 12px; height: 48px;" onclick="document.getElementById('captcha-img').src='{{ url_for('captcha_img') }}?' + Math.random();">🔄</button>
+        </div>
+        <input type="text" name="captcha" required autocomplete="off" class="field__input" placeholder="Введите код">
+      </label>
+
+      <button type="submit" class="btn btn--accent btn--block">Зарегистрироваться</button>
+    </form>
+
+    <p class="authcard__foot">Уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a></p>
+  </div>
+</section>
+{% endblock %}

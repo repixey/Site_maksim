@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Мои записи — ГАРАЖ{% endblock %}
+
+{% block content %}
+<section class="adminwrap__inner">
+  <div class="adminwrap__head">
+    <div>
+      <h1 class="catalog__title">Мои записи на сервис</h1>
+      <p class="hero__sub" style="margin-top: 6px;">История и статус ваших визитов</p>
+    </div>
+    <a href="{{ url_for('index') }}" class="btn btn--accent">+ Записаться ещё</a>
+  </div>
+
+  {% if appointments %}
+    <div class="admintable">
+      <div class="admintable__row admintable__row--head" style="grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1fr;">
+        <span>Услуга / Дата</span>
+        <span>Автомобиль</span>
+        <span>Контакт</span>
+        <span>Статус</span>
+        <span>Действие</span>
+      </div>
+
+      {% for app in appointments %}
+        <div class="admintable__row" style="grid-template-columns: 1.5fr 1fr 1fr 1.2fr 1fr;">
+          <div>
+            <strong>{{ app.service_title or 'Запись на сервис' }}</strong>
+            <div class="mono" style="font-size: 12px; color: var(--muted); margin-top: 2px;">
+              📅 {{ app.date }} в {{ app.time }}
+            </div>
+          </div>
+          <div class="mono">{{ app.car_info or 'Не указан' }}</div>
+          <div>{{ app.user_phone }}</div>
+          <div>
+            {% if app.status == 'Подтверждена' or app.status == 'Выполнено' %}
+              <span class="tag tag--success">{{ app.status }}</span>
+            {% elif app.status == 'Отменена' %}
+              <span class="tag tag--danger">{{ app.status }}</span>
+            {% else %}
+              <span class="tag tag--accent">{{ app.status }}</span>
+            {% endif %}
+          </div>
+          <div>
+            {% if app.status != 'Отменена' and app.status != 'Выполнено' %}
+              <form method="post" action="{{ url_for('cancel_appointment', app_id=app.id) }}" onsubmit="return confirm('Отменить запись?');">
+                <button type="submit" class="btn btn--ghost btn--sm" style="color: var(--danger);">Отменить</button>
+              </form>
+            {% else %}
+              <span class="mono" style="color: var(--muted); font-size: 12px;">—</span>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty">
+      <p class="empty__title">У вас пока нет активных записей</p>
+      <p class="empty__sub">Выберите услугу на главной странице и забронируйте удобное время.</p>
+      <a href="{{ url_for('index') }}" class="btn btn--accent" style="margin-top: 16px;">Перейти в каталог</a>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}
